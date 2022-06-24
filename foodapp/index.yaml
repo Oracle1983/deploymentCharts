@@ -3,72 +3,52 @@ entries:
   foodapp:
   - apiVersion: v2
     appVersion: v3
-    created: "2022-06-22T00:10:04.164826+08:00"
-    description: Working ingress, added namespace template
-    digest: 887dd9de4b131bd6fdaac01b105fab7a10d710f3990a18b0a1d22ad5988f5fe7
+    created: "2022-06-24T07:55:34.941817+08:00"
+    description: Refactored ingress for deployment to Azure
+    digest: 30d65cb516a69cf4abc25ac3aa5f1a38046ca268ba6b0d456f4ae6c54ad714c5
     name: foodapp
     type: application
     urls:
-    - foodapp-0.7.0.tgz
-    version: 0.7.0
+    - foodapp-0.14.0.tgz
+    version: 0.14.0
   - apiVersion: v2
     appVersion: v3
-    created: "2022-06-22T00:10:04.159537+08:00"
-    description: Annotated ingress resource
-    digest: c4fefbd8a31505337aa00ee6c416b8e7a41cbfbffbd4735e68d5252b8ee338e1
+    created: "2022-06-24T07:55:34.940767+08:00"
+    description: Added back alb annotation in ingress
+    digest: 32e14f7942a7652109d7cd7fc20d271f891468cc6a92d90c6b514c4cfba4e640
     name: foodapp
     type: application
     urls:
-    - foodapp-0.6.0.tgz
-    version: 0.6.0
+    - foodapp-0.13.0.tgz
+    version: 0.13.0
   - apiVersion: v2
     appVersion: v3
-    created: "2022-06-22T00:10:04.154326+08:00"
-    description: Refactored Ingress to use ALB
-    digest: 34e36a3a9601742bb1bb976780445d4f5df03c190584bdba7670810e6754f509
+    created: "2022-06-24T07:55:34.940049+08:00"
+    description: Removed quotes in IngressClassName
+    digest: d56b133dd62736a57f76c0d6773959526071afb53f5fbba77f7222e99c9893ec
     name: foodapp
     type: application
     urls:
-    - foodapp-0.5.0.tgz
-    version: 0.5.0
+    - foodapp-0.12.0.tgz
+    version: 0.12.0
   - apiVersion: v2
     appVersion: v3
-    created: "2022-06-22T00:10:04.152297+08:00"
-    description: Refactored Ingress to use ALB
-    digest: a2c45d6fdada233392cffab562aae388fadf686102f0e661d128622fe597223f
+    created: "2022-06-24T07:55:34.939354+08:00"
+    description: Switched Ingress target-type to ip
+    digest: 1be28aea4607ca394b50e9ee50e156098d1a58786e5e4e935f43005e3db9834b
     name: foodapp
     type: application
     urls:
-    - foodapp-0.4.0.tgz
-    version: 0.4.0
+    - foodapp-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     appVersion: v3
-    created: "2022-06-22T00:10:04.150725+08:00"
-    description: Update default backend for ingress
-    digest: 3bd7f660e5285ea69c1f0cd0256aed534036e8783bebf21a26259cfa9e2c5dd5
+    created: "2022-06-24T07:55:34.938657+08:00"
+    description: Removed double annotation of ingress.class
+    digest: c1a2dc8c527844871f7ecdb83e5a3ea9283ccf7d2b812c5a215b7b1cc9e4cd4b
     name: foodapp
     type: application
     urls:
-    - foodapp-0.3.0.tgz
-    version: 0.3.0
-  - apiVersion: v2
-    appVersion: v3
-    created: "2022-06-22T00:10:04.150023+08:00"
-    description: A demo app using tensorfood with flask - prod in AWS fargate
-    digest: 05da5000bebf6872cd219bf394b5adc0cac9ad565e39d50a831bf92344ae98c5
-    name: foodapp
-    type: application
-    urls:
-    - foodapp-0.2.0.tgz
-    version: 0.2.0
-  - apiVersion: v2
-    appVersion: v3
-    created: "2022-06-22T00:10:04.149468+08:00"
-    description: A demo app using tensorfood with flask
-    digest: 96c114d7009b29d14d6d7a7b9f7fa882420441ab361f65a3bf9520ff9d189d91
-    name: foodapp
-    type: application
-    urls:
-    - foodapp-0.1.0.tgz
-    version: 0.1.0
-generated: "2022-06-22T00:10:04.148831+08:00"
+    - foodapp-0.10.0.tgz
+    version: 0.10.0
+generated: "2022-06-24T07:55:34.937975+08:00"
