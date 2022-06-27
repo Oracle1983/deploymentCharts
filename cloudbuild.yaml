@@ -6,17 +6,7 @@ steps:
   args:
   - '-c'
   - |
-    helm package . && \
-    gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
---password-stdin https://asia-southeast1-docker.pkg.dev && \
-    helm push foodapp-{$TAG_NAME}.tgz oci://asia-southeast1-docker.pkg.dev/test-07254/helm-repo
-
-# This step deploys the helm chart into the cluster
-- name: 'gcr.io/$PROJECT_ID/helm'
-  id: Deploy helm chart in cluster
-  entrypoint: /bin/sh
-  args:
-  - '-c'
-  - |
-    gcloud container clusters get-credentials --zone asia-southeast1 staging && \
+    helm package foodapp/ && \
+    gcloud auth print-access-token | helm registry login -u oauth2accesstoken --password-stdin https://asia-southeast1-docker.pkg.dev && \
+    helm push foodapp-0.14.0.tgz oci://asia-southeast1-docker.pkg.dev/test-07254/helm-repo && \
     helm install foodapp oci://asia-southeast1-docker.pkg.dev/{$PROJECT}/helm-repo/foodapp
