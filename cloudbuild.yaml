@@ -1,35 +1,22 @@
-# This step clones the hello-cloudbuild-env repository
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: Clone env repository
+steps:
+# This step packages and push the helm chart to repo
+- name: 'gcr.io/$PROJECT_ID/helm'
+  id: Package and push chart
   entrypoint: /bin/sh
   args:
   - '-c'
   - |
-    gcloud source repos clone cloudbuild-foodapp-env && \
-    cd  deploymentCharts/foodapp && \
-    git checkout staging && \
-    git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+    helm package . && \
+    gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
+--password-stdin https://asia-southeast1-docker.pkg.dev && \
+    helm push foodapp-{$TAG_NAME}.tgz oci://asia-southeast1-docker.pkg.dev/test-07254/helm-repo
 
-# This step generates the new manifest
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: Generate manifest
+# This step deploys the helm chart into the cluster
+- name: 'gcr.io/$PROJECT_ID/helm'
+  id: Deploy helm chart in cluster
   entrypoint: /bin/sh
   args:
   - '-c'
   - |
-     sed "s/APPVERSION/${SHORT_SHA}/g" Chart.yaml
-
-# This step pushes the manifest back to hello-cloudbuild-env
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: Push manifest
-  entrypoint: /bin/sh
-  args:
-  - '-c'
-  - |
-    set -x && \
-    cd cloudbuild-foodapp-env && \
-    git add Charts.yaml && \
-    git commit -m "Deploying image asia-southeast1-docker.pkg.dev/$PROJECT_ID/mlops-repository/cloudbuild-foodapp:${SHORT_SHA}
-    Built from commit ${COMMIT_SHA} of repository hello-cloudbuild-app
-    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
-    git push origin staging
+    gcloud container clusters get-credentials --zone asia-southeast1 staging && \
+    helm install foodapp oci://asia-southeast1-docker.pkg.dev/{$PROJECT}/helm-repo/foodapp
