@@ -21,9 +21,9 @@ steps:
   args:
     - '-c'
     - |
-    gcloud container clusters get-credentials staging --zone asia-southeast1 && \
-    kubectl create ns foodapp && \
-    helm install foodapp /workspace/foodapp-$TAG_NAME.tgz -n foodapp
+      gcloud container clusters get-credentials staging --zone asia-southeast1 && \
+      kubectl create ns foodapp && \
+      helm install foodapp /workspace/foodapp-$TAG_NAME.tgz -n foodapp
 
 
 
