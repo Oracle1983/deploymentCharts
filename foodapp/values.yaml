@@ -5,8 +5,8 @@
 replicaCount: 3
 
 image:
-  registry: hub.docker.com
-  repository: oracle83/foodapp-demo
+  #registry: hub.docker.com
+  repository: asia-southeast1-docker.pkg.dev/test-07254/mlops-repository/cloudbuild-foodapp
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
